@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <!--build:css css/styles.min.css-->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/print.css">
+  <!--endbuild-->
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <a-scene>
+      <a-assets>
+        <img id="sky" src="assets/Cano360.jpeg">
+        <img id="street" src="assets/street.jpg">
+
+          <a-mixin id="wall" geometry="primitive:plane; height:5; width:6;" material="color:red;"></a-mixin>
+          <a-mixin id="floor" geometry="primitive:plane; height:6; width:6;" material="color:grey;"></a-mixin>
+      </a-assets>
+
+<!-- World start -->
+  <a-sky color="#fff" src="#sky"></a-sky>
+  <a-plane color="#b08d63" src="#street" repeat="100 100" rotation="-90 0 0" width="300" height="300"></a-plane>
+
+<!-- World end -->
+
+
+
+
+<!-- Room start -->
+  <a-entity mixin="wall" position="-3 2.5 0" rotation="0 90 0" ></a-entity>
+  <a-entity mixin="wall" position="3 2.5 0" rotation="0 -90 0" ></a-entity>
+  <a-entity mixin="wall" position="0 2.5 -3" rotation="0 0 0" ></a-entity>
+  <a-entity mixin="wall" position="0 2.5 3" rotation="0 180 0" ></a-entity>
+  <a-entity mixin="floor" position="0 0.01 0" rotation="-90 0 0" ></a-entity>
+<!-- Room end -->
+
+<!-- Light start -->
+  <!-- Dim ambient lighting. -->
+  <a-light type="ambient" color="#222"></a-light>
+
+  <!-- Red directional light shining from the top left. -->
+  <a-entity light="angle:26;color:#001ce7;intensity:0.2;type:point" position="-1.651 3.397 -1.902"></a-entity>
+<!-- Light end -->
+
+
+<!-- Camera start -->
+  <a-camera position="1.626 1.6 3.014" rotation="3.0939720937064394 30 0">
+    <a-cursor></a-cursor>
+  </a-camera>
+<!-- Camera end -->
+
+
+  </a-scene>
+
+
+  
+  <!--build:js js/main.min.js -->
+  <script src="js/lib/a-library.js"></script>
+  <script src="js/lib/another-library.js"></script>
+  <script src="js/main.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>
